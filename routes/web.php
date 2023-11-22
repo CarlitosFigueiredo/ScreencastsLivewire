@@ -2,6 +2,7 @@
 
 use App\Livewire\Counter;
 use App\Livewire\HelloWord;
+use App\Livewire\ShowPosts;
 use App\Livewire\Todos;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,7 @@ Route::view('profile', 'profile')
 Route::get('/helloWord', HelloWord::class)
     ->middleware('auth')
     ->name('helloWord');
-    
+
 Route::get('/counter', Counter::class)
     ->middleware('auth')
     ->name('counter');
@@ -37,5 +38,9 @@ Route::get('/counter', Counter::class)
 Route::get('/todos', Todos::class)
     ->middleware('auth')
     ->name('todos');
-    
-require __DIR__.'/auth.php';
+
+Route::get('/showPosts', ShowPosts::class)
+    ->middleware('auth')
+    ->name('showPosts');
+
+require __DIR__ . '/auth.php';
