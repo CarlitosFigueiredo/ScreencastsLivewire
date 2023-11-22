@@ -9,10 +9,27 @@ use Livewire\Component;
 class Todos extends Component
 {
     public $todo = '';
-    public $todos = [
-        'Take out trash',
-        'Do Dishes',
-    ];
+    public $todos = [];
+
+    // Start
+    public function mount()
+    {
+        $this->todos = [
+            'Take out trash',
+            'Do Dishes', 
+        ];
+    }
+	
+    // Called after updating a property
+    public function updated($property, $value)
+    {
+        $this->$property = strtoupper($value);
+    }
+
+    public function updatedTodo($value)
+    {
+        $this->todo = strtoupper($value);
+    }
 
     public function add()
     {
