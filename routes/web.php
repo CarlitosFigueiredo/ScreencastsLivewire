@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\HelloWord;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('/helloWord', HelloWord::class)
+    ->middleware('auth')
+    ->name('helloWord');
+    
 require __DIR__.'/auth.php';
