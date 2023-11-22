@@ -24,15 +24,18 @@
                         </thead>
                         <tbody>
                             @foreach ($posts as $post)
-                                <tr>
+                                <tr wire:key="{{ $post->id }}">
                                     <td class="border border-slate-700 p-2">
                                         {{ $post->title }}
                                     </td>
                                     <td class="border border-slate-700 p-2">
-                                        {{ $post->content }}
+                                        {{ str($post->content)->words(15) }}
                                     </td>
                                     <td class="border border-slate-600 p-2 bg-white dark:bg-gray-800 text-center">
-                                        <x-danger-button>
+                                        <x-danger-button 
+                                            type="button" 
+                                            wire:click="delete({{ $post->id }})"
+                                            wire:confirm="Are you sure you want to delete this Post?">
                                             {{ __('x') }}
                                         </x-danger-button>
                                     </td>

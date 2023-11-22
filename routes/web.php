@@ -43,4 +43,5 @@ Route::get('/showPosts', ShowPosts::class)
     ->middleware('auth')
     ->name('showPosts');
 
+// Continua em Basic Form
 require __DIR__ . '/auth.php';
