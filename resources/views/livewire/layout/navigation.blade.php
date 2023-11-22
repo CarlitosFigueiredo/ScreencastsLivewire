@@ -37,6 +37,9 @@ new class extends Component
                     <x-nav-link :href="route('helloWord')" :active="request()->routeIs('helloWord')" wire:navigate>
                         {{ __('HelloWord') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('counter')" :active="request()->routeIs('counter')" wire:navigate>
+                        {{ __('counter') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -89,7 +92,10 @@ new class extends Component
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('helloWord')" :active="request()->routeIs('helloWord')" wire:navigate>
-                {{ __('helloWord') }}
+                {{ __('HelloWord') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('counter')" :active="request()->routeIs('counter')" wire:navigate>
+                {{ __('Counter') }}
             </x-responsive-nav-link>
         </div>
 
