@@ -2,6 +2,7 @@
 
 use App\Livewire\Counter;
 use App\Livewire\HelloWord;
+use App\Livewire\Todos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,5 +33,9 @@ Route::get('/helloWord', HelloWord::class)
 Route::get('/counter', Counter::class)
     ->middleware('auth')
     ->name('counter');
+
+Route::get('/todos', Todos::class)
+    ->middleware('auth')
+    ->name('todos');
     
 require __DIR__.'/auth.php';

@@ -40,6 +40,9 @@ new class extends Component
                     <x-nav-link :href="route('counter')" :active="request()->routeIs('counter')" wire:navigate>
                         {{ __('counter') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('todos')" :active="request()->routeIs('todos')" wire:navigate>
+                        {{ __('Todos') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -96,6 +99,9 @@ new class extends Component
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('counter')" :active="request()->routeIs('counter')" wire:navigate>
                 {{ __('Counter') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('todos')" :active="request()->routeIs('todos')" wire:navigate>
+                {{ __('Todos') }}
             </x-responsive-nav-link>
         </div>
 
