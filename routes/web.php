@@ -2,6 +2,7 @@
 
 use App\Livewire\Counter;
 use App\Livewire\CreatePost;
+use App\Livewire\EditProfile;
 use App\Livewire\ExamplesAlpine;
 use App\Livewire\HelloWord;
 use App\Livewire\ShowPosts;
@@ -53,4 +54,8 @@ Route::get('/examplesAlpine', ExamplesAlpine::class)
     ->middleware('auth')
     ->name('examplesAlpine');
 
+Route::get('/editProfile', EditProfile::class)
+    ->middleware('auth')
+    ->name('editProfile');
+    
 require __DIR__ . '/auth.php';

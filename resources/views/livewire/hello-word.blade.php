@@ -14,6 +14,7 @@
                     </p>
 
                     <x-primary-button wire:click="$refresh">
+                        
                         {{ __('Refresh') }}
                     </x-primary-button>
                 </div>
