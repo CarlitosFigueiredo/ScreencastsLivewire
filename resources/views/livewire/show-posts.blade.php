@@ -19,30 +19,16 @@
                                 <th class="border border-slate-600 p-2 bg-white dark:bg-gray-800 text-start">
                                     {{ __('Content') }}
                                 </th>
-                                <th class="border border-slate-600 p-2 bg-white dark:bg-gray-800 w-16"></th>
+                                <th class="border border-slate-600 p-2 bg-white dark:bg-gray-800 w-48"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($posts as $post)
-                                <tr wire:key="{{ $post->id }}">
-                                    <td class="border border-slate-700 p-2">
-                                        {{ $post->title }}
-                                    </td>
-                                    <td class="border border-slate-700 p-2">
-                                        {{ str($post->content)->words(15) }}
-                                    </td>
-                                    <td class="border border-slate-600 p-2 bg-white dark:bg-gray-800 text-center">
-                                        <x-danger-button 
-                                            type="button" 
-                                            wire:click="delete({{ $post->id }})"
-                                            wire:confirm="Are you sure you want to delete this Post?">
-                                            {{ __('x') }}
-                                        </x-danger-button>
-                                    </td>
-                                </tr>
+
+                                <livewire:post-row :key="$post->id" :post="$post" />
                             @endforeach
                         </tbody>
-                    </table>
+                    </table> 
                 </div>
             </div>
         </div>
