@@ -44,7 +44,6 @@ new class extends Component
                     <x-nav-link :href="route('todos')" :active="request()->routeIs('todos')" wire:navigate>
                         {{ __('Todos') }}
                     </x-nav-link>
-
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
                         <x-dropdown align="top" width="48">
 
@@ -66,6 +65,10 @@ new class extends Component
                             </x-slot>
                         </x-dropdown>
                     </div>
+                    
+                    <x-nav-link :href="route('examplesAlpine')" :active="request()->routeIs('examplesAlpine')" wire:navigate>
+                        {{ __('Alpine') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -132,6 +135,9 @@ new class extends Component
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('createPost')" :active="request()->routeIs('createPost')" wire:navigate>
                 {{ __('Create Post') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('examplesAlpine')" :active="request()->routeIs('examplesAlpine')" wire:navigate>
+                {{ __('Alpine') }}
             </x-responsive-nav-link>
         </div>
 

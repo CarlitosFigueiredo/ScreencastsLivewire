@@ -2,6 +2,7 @@
 
 use App\Livewire\Counter;
 use App\Livewire\CreatePost;
+use App\Livewire\ExamplesAlpine;
 use App\Livewire\HelloWord;
 use App\Livewire\ShowPosts;
 use App\Livewire\Todos;
@@ -47,5 +48,9 @@ Route::get('/showPosts', ShowPosts::class)
 Route::get('/createPost', CreatePost::class)
     ->middleware('auth')
     ->name('createPost');
+
+Route::get('/examplesAlpine', ExamplesAlpine::class)
+    ->middleware('auth')
+    ->name('examplesAlpine');
 
 require __DIR__ . '/auth.php';
