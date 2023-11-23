@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Counter;
+use App\Livewire\CreatePost;
 use App\Livewire\HelloWord;
 use App\Livewire\ShowPosts;
 use App\Livewire\Todos;
@@ -43,5 +44,8 @@ Route::get('/showPosts', ShowPosts::class)
     ->middleware('auth')
     ->name('showPosts');
 
-// Continua em Basic Form
+Route::get('/createPost', CreatePost::class)
+    ->middleware('auth')
+    ->name('createPost');
+
 require __DIR__ . '/auth.php';

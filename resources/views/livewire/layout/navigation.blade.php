@@ -31,6 +31,7 @@ new class extends Component
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -43,15 +44,35 @@ new class extends Component
                     <x-nav-link :href="route('todos')" :active="request()->routeIs('todos')" wire:navigate>
                         {{ __('Todos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('showPosts')" :active="request()->routeIs('showPosts')" wire:navigate>
-                        {{ __('Show Posts') }}
-                    </x-nav-link>
+
+                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <x-dropdown align="top" width="48">
+
+                            <x-slot name="trigger">
+                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div x-data="{ name: 'Posts' }" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
+
+                                </button>
+                            </x-slot>
+        
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('showPosts')" wire:navigate>
+                                    {{ __('Show Posts') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('createPost')" wire:navigate>
+                                    {{ __('Create Post') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
+
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div x-data="{ name: '{{ auth()->user()->name }}' }" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
@@ -108,6 +129,9 @@ new class extends Component
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('showPosts')" :active="request()->routeIs('showPosts')" wire:navigate>
                 {{ __('Show Posts') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('createPost')" :active="request()->routeIs('createPost')" wire:navigate>
+                {{ __('Create Post') }}
             </x-responsive-nav-link>
         </div>
 
