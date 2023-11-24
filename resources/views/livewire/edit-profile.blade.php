@@ -16,15 +16,15 @@
                             <h3 class="font-medium text-slate-700 text-base">Username</h3>
                 
                             <input
-                                wire:model.blur="name"
+                                wire:model.blur="form.name"
                                 @class([
                                     'px-3 py-2 rounded-lg text-gray-800',
-                                    'border border-slate-300' => $errors->missing('name'),
-                                    'border-2 border-red-500' => $errors->has('name'),
+                                    'border border-slate-300' => $errors->missing('form.name'),
+                                    'border-2 border-red-500' => $errors->has('form.name'),
                                 ])
                             >
                 
-                            @error('name')
+                            @error('form.name')
                                 <p class="text-sm text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
@@ -33,7 +33,7 @@
                             <h3 class="font-medium text-slate-700 text-base">Bio</h3>
                 
                             <textarea 
-                                wire:model="bio"
+                                wire:model="form.bio"
                                 rows="4" 
                                 class="text-gray-800 px-3 py-2 border border-slate-300 rounded-lg"></textarea>
                         </div>
