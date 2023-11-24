@@ -6,6 +6,7 @@ use App\Livewire\EditProfile;
 use App\Livewire\ExamplesAlpine;
 use App\Livewire\HelloWord;
 use App\Livewire\ShowPosts;
+use App\Livewire\Signup;
 use App\Livewire\Todos;
 use Illuminate\Support\Facades\Route;
 
@@ -57,5 +58,9 @@ Route::get('/examplesAlpine', ExamplesAlpine::class)
 Route::get('/editProfile', EditProfile::class)
     ->middleware('auth')
     ->name('editProfile');
+
+Route::get('/signup', Signup::class)
+    ->middleware('auth')
+    ->name('signup');
     
 require __DIR__ . '/auth.php';

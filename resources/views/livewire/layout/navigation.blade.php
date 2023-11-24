@@ -92,6 +92,9 @@ new class extends Component
                             </x-slot>
                         </x-dropdown>
                     </div>
+                    <x-nav-link :href="route('signup')" :active="request()->routeIs('signup')" wire:navigate>
+                        {{ __('Signup') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -161,6 +164,9 @@ new class extends Component
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('examplesAlpine')" :active="request()->routeIs('examplesAlpine')" wire:navigate>
                 {{ __('Alpine') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('signup')" :active="request()->routeIs('signup')" wire:navigate>
+                {{ __('Signup') }}
             </x-responsive-nav-link>
         </div>
 
