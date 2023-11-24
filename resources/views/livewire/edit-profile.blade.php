@@ -10,15 +10,14 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 
-                    <form wire:submit="save" class="min-w-[30rem] flex flex-col gap-6 bg-white rounded-lg shadow p-6">
-
+                    <form wire:submit="save" class="min-w-[30rem] flex flex-col gap-6 bg-white rounded-lg shadow p-6 text-gray-900">
                         <label class="flex flex-col gap-2">
-                            <h3 class="font-medium text-slate-700 text-base">Username</h3>
+                            <h3 class="font-medium text-slate-700 text-base">Username <span class="text-red-500 opacity-75" aria-hidden="true">*</span></h3>
                 
                             <input
                                 wire:model.blur="form.name"
                                 @class([
-                                    'px-3 py-2 rounded-lg text-gray-800',
+                                    'px-3 py-2 rounded-lg',
                                     'border border-slate-300' => $errors->missing('form.name'),
                                     'border-2 border-red-500' => $errors->has('form.name'),
                                 ])
@@ -36,27 +35,68 @@
                         <label class="flex flex-col gap-2">
                             <h3 class="font-medium text-slate-700 text-base">Bio</h3>
                 
-                            <textarea wire:model="form.bio" rows="4" class="px-3 py-2 text-gray-800 border border-slate-300 rounded-lg"></textarea>
+                            <textarea wire:model="form.bio" rows="4" class="px-3 py-2 border border-slate-300 rounded-lg"></textarea>
                         </label>
-
-                        {{-- <select name="" id="" class="px-3 py-2 text-gray-800 rounded-lg border border-slate-300">
-                            <option value="">foo</option>
-                        </select> --}}
-
-                        <fieldset class="flex flex-col gap-2 text-gray-800">
+                
+                        <label class="flex flex-col gap-2">
+                            <h3 class="font-medium text-slate-700 text-base">Country <span class="text-red-500 opacity-75" aria-hidden="true">*</span></h3>
+                
+                            <select
+                                wire:model.blur="form.country"
+                                @class([
+                                    'px-3 py-2 rounded-lg',
+                                    'border border-slate-300' => $errors->missing('form.country'),
+                                    'border-2 border-red-500' => $errors->has('form.country'),
+                                ])
+                                @error('form.country')
+                                    aria-invalid="true"
+                                    aria-description="{{ $message }}"
+                                @enderror
+                            >
+                                <option value="" selected disabled>Choose your country</option>
+                
+                                @foreach (App\Enums\Country::cases() as $country)
+                                    <option value="{{ $country->value }}">{{ $country->label() }}</option>
+                                @endforeach
+                            </select>
+                
+                            @error('form.country')
+                                <p class="text-sm text-red-500" aria-live="assertive">{{ $message }}</p>
+                            @enderror
+                        </label>
+                
+                        <fieldset class="flex flex-col gap-2">
                             <div>
                                 <legend class="font-medium text-slate-700 text-base">Receive emails?</legend>
                             </div>
                 
                             <div class="flex gap-6">
                                 <label class="flex items-center gap-2">
-                                    <input wire:model.boolean="form.receive_emails" type="radio" name="receive_emails" value="1">
+                                    <input wire:model.boolean="form.receive_emails" type="radio" name="receive_emails" value="true">
                                     Yes
                                 </label>
                 
                                 <label class="flex items-center gap-2">
-                                    <input wire:model.boolean="form.receive_emails" type="radio" name="receive_emails" value="0">
+                                    <input wire:model.boolean="form.receive_emails" type="radio" name="receive_emails" value="false">
                                     No
+                                </label>
+                            </div>
+                        </fieldset>
+                
+                        <fieldset x-show="$wire.form.receive_emails" class="flex flex-col gap-2">
+                            <div>
+                                <legend class="font-medium text-slate-700 text-base">Email type</legend>
+                            </div>
+                
+                            <div class="flex flex-col gap-2">
+                                <label class="flex items-center gap-2">
+                                    <input wire:model="form.receive_updates" type="checkbox" name="receive_emails" class="rounded">
+                                    General updates
+                                </label>
+                
+                                <label class="flex items-center gap-2">
+                                    <input wire:model="form.receive_offers" type="checkbox" name="receive_emails" class="rounded">
+                                    Marketing offers
                                 </label>
                             </div>
                         </fieldset>
@@ -85,7 +125,7 @@
                     >
                         <div class="flex gap-2 items-center text-green-500 text-sm font-medium">
                             Profile updated successfully
-
+                
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
