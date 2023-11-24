@@ -12,7 +12,7 @@
                 
                     <form wire:submit="save" class="min-w-[30rem] flex flex-col gap-6 bg-white rounded-lg shadow p-6">
 
-                        <div class="flex flex-col gap-2">
+                        <label class="flex flex-col gap-2">
                             <h3 class="font-medium text-slate-700 text-base">Username</h3>
                 
                             <input
@@ -22,21 +22,44 @@
                                     'border border-slate-300' => $errors->missing('form.name'),
                                     'border-2 border-red-500' => $errors->has('form.name'),
                                 ])
+                                @error('form.name')
+                                    aria-invalid="true"
+                                    aria-description="{{ $message }}"
+                                @enderror
                             >
                 
                             @error('form.name')
-                                <p class="text-sm text-red-500">{{ $message }}</p>
+                                <p class="text-sm text-red-500" aria-live="assertive">{{ $message }}</p>
                             @enderror
-                        </div>
+                        </label>
                 
-                        <div class="flex flex-col gap-2">
+                        <label class="flex flex-col gap-2">
                             <h3 class="font-medium text-slate-700 text-base">Bio</h3>
                 
-                            <textarea 
-                                wire:model="form.bio"
-                                rows="4" 
-                                class="text-gray-800 px-3 py-2 border border-slate-300 rounded-lg"></textarea>
-                        </div>
+                            <textarea wire:model="form.bio" rows="4" class="px-3 py-2 text-gray-800 border border-slate-300 rounded-lg"></textarea>
+                        </label>
+
+                        {{-- <select name="" id="" class="px-3 py-2 text-gray-800 rounded-lg border border-slate-300">
+                            <option value="">foo</option>
+                        </select> --}}
+
+                        <fieldset class="flex flex-col gap-2 text-gray-800">
+                            <div>
+                                <legend class="font-medium text-slate-700 text-base">Receive emails?</legend>
+                            </div>
+                
+                            <div class="flex gap-6">
+                                <label class="flex items-center gap-2">
+                                    <input wire:model.boolean="form.receive_emails" type="radio" name="receive_emails" value="1">
+                                    Yes
+                                </label>
+                
+                                <label class="flex items-center gap-2">
+                                    <input wire:model.boolean="form.receive_emails" type="radio" name="receive_emails" value="0">
+                                    No
+                                </label>
+                            </div>
+                        </fieldset>
                 
                         <div class="flex">
                             <button type="submit" class="relative w-full bg-blue-500 py-3 px-8 rounded-lg text-white font-medium disabled:cursor-not-allowed disabled:opacity-75">
@@ -58,10 +81,11 @@
                         x-transition.out.opacity.duration.2000ms
                         x-effect="if($wire.showSuccessIndicator) setTimeout(() => $wire.showSuccessIndicator = false, 3000)"
                         class="flex justify-end pt-4"
+                        aria-live="polite"
                     >
                         <div class="flex gap-2 items-center text-green-500 text-sm font-medium">
                             Profile updated successfully
-                
+
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
