@@ -13,7 +13,7 @@ class PostRow extends Component
     {
         $this->post->archive();
     }
-
+    
     public function render()
     {
         return view('livewire.post-row');
