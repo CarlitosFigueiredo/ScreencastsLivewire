@@ -14,7 +14,7 @@ class Signup extends Component
     {
         $this->showModal = true;
     }
-
+    
     public function render()
     {
         return view('livewire.signup');
