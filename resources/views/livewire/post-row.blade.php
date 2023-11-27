@@ -6,7 +6,7 @@
     <td class="border border-slate-700 p-2">
         {{ str($post->content)->words(15) }}
     </td>
-    <td class="border border-slate-600 text-center">
+    <td class="border border-slate-600 text-center inline-flex items-center gap-2">
 
         @unless($post->is_archived)
             
@@ -21,12 +21,13 @@
 
         <x-dialog>
             <x-dialog.button>
-                <button type="button">
+                <button type="button" class="px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                     Delete
                 </button>
             </x-dialog.button>
 
             <x-dialog.panel>
+
                 <div class="flex flex-col gap-6 text-gray-800" x-data="{ confirmation: '' }">
                     <h2 class="font-semibold text-3xl">Are you sure you?</h2>
                     <h2 class="text-lg text-slate-700">This operation is permanant and can't be reversed. This post will be deleted forever.</h2>
