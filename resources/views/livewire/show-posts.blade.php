@@ -25,10 +25,10 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="didi-y divide-slate-200" wire:loading.class="opacity-50">
+                        <tbody>
                             @foreach ($posts as $post)
 
-                                <livewire:post-row :key="$post->id" :post="$post" @deleted="delete({{ $post->id }})" />
+                                <livewire:post-row :key="$post->id" :post="$post" />
                             @endforeach
                         </tbody>
                     </table> 

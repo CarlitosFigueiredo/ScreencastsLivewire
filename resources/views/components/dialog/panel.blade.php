@@ -9,11 +9,11 @@
         <div x-dialog:overlay x-transition:enter.opacity class="fixed inset-0 bg-black/25"></div>
 
         <!-- Panel -->
-        <div class="relative min-h-screen flex items-center justify-center p-4">
+        <div class="relative min-h-full flex justify-center items-end sm:items-center p-0 sm:p-4">
             <div
                 x-dialog:panel
                 x-transition.in
-                class="relative max-w-xl w-full bg-white rounded-xl shadow-lg overflow-y-auto"
+                class="relative max-w-xl w-full bg-white rounded-t-xl sm:rounded-b-xl shadow-lg overflow-hidden"
             >
                 <!-- Close Button -->
                 <div class="absolute top-0 right-0 pt-4 pr-4">
