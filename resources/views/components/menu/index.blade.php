@@ -1,5 +1,5 @@
 <div x-data="{ menuOpen: false }">
-    <div x-menu x-model="menuOpen" class="relative flex items-center">
+    <div x-menu x-model="menuOpen">
         {{ $slot }}
     </div>
 </div>
