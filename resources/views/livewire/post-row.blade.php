@@ -43,7 +43,7 @@
                         </x-dialog.close-button>
 
                         <x-dialog.close-button>
-                            <button :disabled="confirmation !== 'CONFIRM'" wire:click="$parent.delete({{ $post->id }})" class="text-lg text-center rounded-xl bg-red-500 text-white px-6 py-2 font-semibold disabled:cursor-not-allowed disabled:opacity-50">Delete</button>
+                            <button :disabled="confirmation !== 'CONFIRM'" wire:click="dispatch('deleted')" wire:click="$parent.delete({{ $post->id }})" class="text-lg text-center rounded-xl bg-red-500 text-white px-6 py-2 font-semibold disabled:cursor-not-allowed disabled:opacity-50">Delete</button>
                         </x-dialog.close-button>
                     </x-dialog.footer>
                 </div>
