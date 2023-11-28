@@ -15,6 +15,15 @@ class CreatePost extends Form
     #[Rule('required')]
     public $content = '';
 
+    public Post $post;
+
+    public function setPost($post)
+    {
+        $this->post = $post;
+        $this->title = $post->title;
+        $this->content = $post->content;
+    }
+
     public function save()
     {
         $this->validate();
@@ -25,5 +34,15 @@ class CreatePost extends Form
         ]);
 
         $this->reset(['title', 'content']);
+    }
+
+    public function update()
+    {
+        $this->validate();
+
+        $this->post->update([
+            'title' => $this->title,
+            'content' => $this->content,
+        ]);
     }
 }
