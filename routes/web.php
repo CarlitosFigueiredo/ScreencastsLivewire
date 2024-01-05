@@ -5,6 +5,7 @@ use App\Livewire\CreatePost;
 use App\Livewire\EditProfile;
 use App\Livewire\ExamplesAlpine;
 use App\Livewire\HelloWord;
+use App\Livewire\Order\Index\Page;
 use App\Livewire\ShowPosts;
 use App\Livewire\Signup;
 use App\Livewire\Todos;
@@ -62,5 +63,8 @@ Route::get('/editProfile', EditProfile::class)
 Route::get('/signup', Signup::class)
     ->middleware('auth')
     ->name('signup');
-    
+
+
+Route::get('/store/orders', Page::class)->name('order.index.page');
+
 require __DIR__ . '/auth.php';
